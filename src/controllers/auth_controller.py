@@ -3,6 +3,8 @@ from flask_login import login_user, logout_user, login_required
 from route.auth import auth
 from src.models.User import User
 from src.forms.login_form import LoginForm
+from src.forms.register_form import RegistrationForm
+from src.app import db
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -21,3 +23,17 @@ def logout():
     logout_user()
     flash('You have been logged out.')
     return redirect(url_for('home.index'))
+
+@auth.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    # if submit -> get data from form -> save into DB -> redirect auth/login
+    if form.validate_on_submit():
+        user = User(email=form.email.data,
+                    username=form.username.data,
+                    password=form.password.data)
+        db.session.add(user)
+        flash('You can now login.')
+        return redirect(url_for('auth.login'))
+    # else render: register.html
+    return render_template('auth/register.html', form=form)
