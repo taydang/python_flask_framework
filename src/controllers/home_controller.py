@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask import render_template, session, redirect, url_for
 from route.home import home
-from src.utils.forms import LoginForm
+from src.forms.login_form import LoginForm
 from src.app import db
 from ..models.User import User
 
