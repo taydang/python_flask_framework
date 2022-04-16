@@ -22,17 +22,17 @@ class DevelopmentConfig(Config):
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost/flask_react_app'
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost/flask_react_app"
 
 
 class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost/flask_react_app'
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost/flask_react_app"
     
 class ProductionConfig(Config):
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost/flask_react_app'
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost/flask_react_app"
  
 config = {
     'development': DevelopmentConfig,
